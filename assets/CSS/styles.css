@@ -393,30 +393,21 @@ header {
 /* Stili per il contenitore con il testo e il gioco */
 #content-container {
     background-color: rgba(255, 255, 255, 0);
-   /* Sfondo bianco semi-trasparente */
     padding: 20px;
     border-radius: 10px;
-   /* Arrotonda gli angoli */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
-   /* Ombra leggera per un effetto di sollevamento */
     max-width: 900px;
-   /* Larghezza massima del contenitore */
     margin: 0 auto;
-   /* Centratura orizzontale */
     text-align: center;
-   /* Allinea il testo al centro */
 }
 /* Contenitore del testo principale */
 .text-container {
     text-align: center;
-   /* Allinea il testo al centro */
     margin-top: 20px;
-   /* Margine superiore */
 }
 /* Stile per il testo 3D */
 .text-3d {
     font-size: 4em;
-   /* Dimensione del font */
     font-weight: bold;
    /* Grassetto */
     color: #000000;
@@ -751,6 +742,11 @@ footer p {
     font-size: 0.9em;
 }
 @media (max-width: 1024px) {
+    #space-invaders-title {
+        font-size: 2.5em; /* Riduci la dimensione del testo */
+        letter-spacing: 4px; /* Riduci lo spazio tra le lettere */
+        margin: 15px 0; /* Riduci il margine */
+    }
     .galaxy-heading {
         font-size: 2.8em; 
         margin-bottom: 18px; 
@@ -778,6 +774,11 @@ footer p {
     }
 }
 @media (max-width: 768px) {
+    #space-invaders-title {
+        font-size: 2em; /* Riduci ulteriormente la dimensione del testo */
+        letter-spacing: 3px; /* Riduci ulteriormente lo spazio tra le lettere */
+        margin: 10px 0; /* Riduci ulteriormente il margine */
+    }
     .galaxy-heading {
         font-size: 2.5em; 
         margin-bottom: 15px; 
@@ -829,6 +830,11 @@ footer p {
 
 /* Media Queries per schermi piccoli (fino a 600px) */
 @media (max-width: 600px) {
+    #space-invaders-title {
+        font-size: 1.5em; /* Riduci ulteriormente la dimensione del testo */
+        letter-spacing: 2px; /* Riduci ulteriormente lo spazio tra le lettere */
+        margin: 5px 0; /* Riduci ulteriormente il margine */
+    }
     #game3-area {
         width: 90%;
         height: 300px;
@@ -838,44 +844,5 @@ footer p {
 }
 .nav-menu.active {
     display: flex; /* Mostra il menu quando la classe 'active' è applicata */
-}
-}
-/* Media Queries per schermi molto piccoli (fino a 480px) */
-@media (max-width: 480px) {
-    .galaxy-heading {
-        font-size: 2em; 
-        margin-bottom: 10px; 
-    }
-
-    .text-3d {
-        font-size: 1.5em;
-   }
-    .text-3d::before {
-        transform: translate(0.5px, -0.5px);
-   }
-    .text-3d::after {
-        transform: translate(-0.5px, 0.5px);
-   }
-    h1 {
-        font-size: 1.5em;
-   }
-    #game-description {
-        font-size: 0.8em;
-   }
-    p {
-        font-size: 0.8em;
-   }
-    button {
-        font-size: 0.9em;
-        padding: 6px;
-   }
-    #game-container {
-        padding: 2px;
-   }
-    #game-area {
-        height: 30vh;
-   }
-    #game-message {
-        font-size: 0.8em;
-   }
+ }
 }
