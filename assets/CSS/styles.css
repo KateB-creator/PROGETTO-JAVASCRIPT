@@ -1,0 +1,898 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+html {
+    scroll-behavior: smooth;
+   /* Abilita lo scorrimento fluido */
+}
+body {
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at 20% 30%, rgba(255, 0, 212, 0.5), transparent 50%), radial-gradient(circle at 80% 70%, rgba(0, 255, 255, 0.3), transparent 50%), radial-gradient(circle at 50% 50%, rgba(96, 0, 122, 0.6), transparent 70%), linear-gradient(to bottom, #1e0254, #0b0342 60%, #60007a 80%, #ae0992 100%);
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #051c35;
+    color: #fff;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+}
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+}
+/* Stili per il menu di navigazione */
+.nav-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-menu li {
+    margin: 0 15px;
+}
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    display: block;
+}
+/* Menù a tendina per social */
+.nav-menu .social {
+    position: relative;
+}
+.nav-menu .social:hover .social-dropdown {
+    display: block;
+}
+.social-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #370029;
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+    border-radius: 5px;
+    z-index: 1000;
+}
+.social-dropdown li {
+    margin: 0;
+}
+.social-dropdown a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+}
+.social-dropdown a:hover {
+    background-color: #f121d2;
+}
+.share-button {
+    background-color: #670867;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+}
+.share-button:hover {
+    background-color: #ff03fb;
+}
+/* Stili per i link del menu */
+#navMenu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.4s ease;
+}
+/* Effetto travolgente al passaggio del mouse */
+#navMenu a:hover, #navMenu a:focus {
+    color: #ffffff;
+    animation: pulse 1.5s infinite;
+}
+/* Effetto di pulsazione */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0.5);
+       /* Nessuna ombra iniziale */
+   }
+    50% {
+        transform: scale(1.2);
+       /* Ingrandisce il link */
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+       /* Ombra più grande */
+   }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+       /* Torna alla dimensione iniziale */
+   }
+}
+/* Effetto di bordo sottile */
+#navMenu a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+   /* Colore della linea */
+    transition: width 0.3s ease, left 0.3s ease;
+   /* Transizione per l'effetto della linea */
+}
+/* Mostra la linea quando il mouse è sopra */
+#navMenu a:hover::after, #navMenu a:focus::after {
+    width: 100%;
+    left: 0;
+}
+
+.welcome-section {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 300px; /* Imposta un'altezza per creare spazio verticale */
+    display: flex;
+    align-items: center; /* Centra verticalmente il contenuto */
+    justify-content: center; /* Centra orizzontalmente il contenuto */
+    margin-top: 20px; /* Spazio sotto l'header */
+}
+
+/* Titolo Animato */
+.introduction-section {
+    text-align: center;
+    margin: 40px 0;
+}
+.animated-title {
+    font-size: 2.5rem;
+    color: #eee2de;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: titleAnimation 3s ease-in-out infinite;
+}
+/* Animazione del Titolo */
+@keyframes titleAnimation {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+   }
+    50% {
+        transform: translateY(0);
+        opacity: 1;
+   }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+   }
+}
+/* Stili per la sezione delle card */
+.card-section {
+    padding: 40px;
+    background-color: #f8f8f800;
+}
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.card {
+    width: 400px;
+    height: 500px;
+    perspective: 1000px;
+}
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+.card-front {
+    background: #ffffff95;
+}
+.card-back {
+    background: #ffffffb9;
+    transform: rotateY(180deg);
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.card-back p {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Stili generali per la sezione di storia */
+@keyframes gradientAnimation {
+    0% {
+        background: linear-gradient(135deg, #000428, #004e92);
+   }
+    50% {
+        background: linear-gradient(135deg, #004e92, #000428);
+   }
+    100% {
+        background: linear-gradient(135deg, #000428, #004e92);
+   }
+}
+
+.galaxy-heading {
+    font-family: 'Orbitron', sans-serif; /* Font spaziale */
+    color: #c0c0c0; /* Colore argentato */
+    text-shadow: 1px 1px 2px #d8d8d8; /* Ombra per dare un effetto di luminosità */
+    font-size: 3em; /* Dimensione del font */
+    text-align: center; /* Allineamento al centro */
+    margin-bottom: 20px; /* Spazio sotto l'elemento */
+}
+.story-section {
+    padding: 2em;
+    color: #fff;
+    text-align: center;
+    background: linear-gradient(135deg, #000428, #004e92);
+    background-size: 200% 200%;
+    animation: gradientAnimation 30s ease infinite;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: slideIn 1s ease-out forwards;
+}
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+   }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+   }
+}
+/* Stili per il contenuto della storia */
+.story-section .story-content {
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0;
+   /* Inizia invisibile */
+    animation: slideInUp 1.5s ease-out forwards;
+   /* Applica l'animazione */
+}
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+   }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+   }
+}
+/* Stile e animazione per i paragrafi */
+.story-section p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 1.5em;
+    opacity: 0;
+   /* Inizia invisibile */
+    animation: fadeInUp 2s ease-out forwards;
+   /* Applica l'animazione */
+    animation-delay: calc(0.5s * var(--i));
+   /* Ritardo basato su una variabile */
+    color: #e0e0e0;
+   /* Colore del testo grigio chiaro per un effetto galattico */
+    text-shadow: 0 0 5px #fff, 
+   /* Effetto di bagliore bianco */
+    0 0 10px #fff, 0 0 15px #ff00ff, 
+   /* Effetto di bagliore viola per dare un tocco futuristico */
+    0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff;
+}
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+   }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+   }
+}
+/* Applicazione del ritardo per i paragrafi */
+.story-section p:nth-of-type(1) {
+    --i: 1;
+}
+.story-section p:nth-of-type(2) {
+    --i: 2;
+}
+.story-section p:nth-of-type(3) {
+    --i: 3;
+}
+.story-section p:nth-of-type(4) {
+    --i: 4;
+}
+.story-section p:nth-of-type(5) {
+    --i: 5;
+}
+.story-section .start-button {
+    display: inline-block;
+    padding: 0.7em 1.5em;
+    margin: 10px 20px;
+   /* Margine verticale di 10px e orizzontale di 20px */
+    border: none;
+    background-color: #6b0351;
+    color: white;
+    font-size: 1.2em;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    animation: fadeInScroll 2.2s ease-out forwards;
+   /* Applica l'animazione */
+}
+.story-section .start-button:hover {
+    background-color: #f058fb;
+}
+/* Contenitore principale per il contenuto */
+.background-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f4f4f400;
+    border-radius: 10px;
+}
+#game1 .text-container {
+    margin-bottom: 10px;
+   /* Distanza tra il titolo e la storia nel Game 1 */
+}
+#game2-container h2, #game3-container h2 {
+    margin-bottom: 5px;
+   /* Distanza tra il titolo e la storia negli altri giochi */
+}
+#game1 {
+    background-image: url('/assets/IMG/sfondo-game1.webp');
+   /* Percorso dell'immagine di sfondo */
+    background-size: cover;
+   /* Adatta l'immagine per coprire tutto lo spazio del contenitore */
+    background-position: center;
+   /* Centra l'immagine di sfondo */
+    background-repeat: no-repeat;
+   /* Impedisce la ripetizione dell'immagine */
+}
+/* Stili per il contenitore con il testo e il gioco */
+#content-container {
+    background-color: rgba(255, 255, 255, 0);
+   /* Sfondo bianco semi-trasparente */
+    padding: 20px;
+    border-radius: 10px;
+   /* Arrotonda gli angoli */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+   /* Ombra leggera per un effetto di sollevamento */
+    max-width: 900px;
+   /* Larghezza massima del contenitore */
+    margin: 0 auto;
+   /* Centratura orizzontale */
+    text-align: center;
+   /* Allinea il testo al centro */
+}
+/* Contenitore del testo principale */
+.text-container {
+    text-align: center;
+   /* Allinea il testo al centro */
+    margin-top: 20px;
+   /* Margine superiore */
+}
+/* Stile per il testo 3D */
+.text-3d {
+    font-size: 4em;
+   /* Dimensione del font */
+    font-weight: bold;
+   /* Grassetto */
+    color: #000000;
+   /* Colore del testo */
+    position: relative;
+   /* Posizionamento relativo per gli effetti 3D */
+    display: inline-block;
+   /* Impedisce la rottura del testo */
+    margin: 0.2em 0;
+   /* Margini verticali */
+}
+/* Effetti 3D per il testo */
+.text-3d::before, .text-3d::after {
+    content: attr(data-text);
+   /* Utilizza il valore dell'attributo data-text */
+    position: absolute;
+   /* Posizionamento assoluto per l'effetto 3D */
+    top: 0;
+   /* Allinea in alto */
+    left: 0;
+   /* Allinea a sinistra */
+    z-index: -1;
+   /* Posizionamento dietro il testo principale */
+}
+.text-3d::before {
+    color: cyan;
+   /* Colore dell'effetto 3D */
+    transform: translate(3px, -3px);
+   /* Sposta l'effetto 3D */
+}
+.text-3d::after {
+    color: red;
+   /* Colore dell'effetto 3D */
+    transform: translate(-3px, 3px);
+   /* Sposta l'effetto 3D */
+}
+/* Stile per la descrizione del gioco */
+#game-description {
+    font-size: 20px;
+   /* Dimensione del font */
+    margin-bottom: 20px;
+   /* Margine inferiore */
+    color: #ffffff;
+   /* Colore del testo */
+}
+/* Stile per i paragrafi */
+p {
+    font-size: 20px;
+   /* Dimensione del font */
+    margin: 10px 0;
+   /* Margini superiori e inferiori */
+}
+/* Contenitore del gioco */
+#content-container {
+    text-align: center;
+    padding: 20px;
+}
+/* Contenitore per i controlli */
+/* Stile per il contatore */
+#counter-container {
+    display: flex;
+   /* Utilizza il layout Flexbox */
+    align-items: center;
+   /* Allinea gli elementi verticalmente al centro */
+    justify-content: center;
+   /* Allinea gli elementi orizzontalmente al centro */
+    margin: 20px 0;
+   /* Margini superiore e inferiore */
+}
+#counter-value {
+    font-size: 2em;
+   /* Dimensione del font per il contatore */
+    color: #ff0000;
+   /* Colore del testo */
+    font-weight: bold;
+   /* Grassetto */
+    margin: 0 20px;
+   /* Margine orizzontale per distanziare dai pulsanti */
+}
+/* Stile per i pulsanti */
+button {
+    font-size: 1.5em;
+   /* Dimensione del font per i pulsanti */
+    padding: 12px 20px;
+   /* Spaziatura interna */
+    margin: 0 10px;
+   /* Margine orizzontale tra i pulsanti e il contatore */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #60024d;
+   /* Colore di sfondo dei pulsanti */
+    color: white;
+    transition: background-color 0.3s, transform 0.3s;
+   /* Transizione per effetto hover */
+}
+/* Effetto hover per i pulsanti */
+button:hover {
+    background-color: #fa5aec;
+   /* Colore di sfondo al passaggio del mouse */
+    transform: scale(1.05);
+   /* Leggera ingrandimento per effetto di interazione */
+}
+/* Colori specifici per i pulsanti di incremento e decremento */
+#increment, #decrement, #restart-button {
+    background-color: #ffc107;
+   /* Colore giallo per i pulsanti */
+    color: #ffffff;
+   /* Colore del testo per questi pulsanti */
+}
+#restart-button {
+    background-color: #dc3545;
+   /* Colore rosso per il pulsante di riavvio */
+}
+/* Contenitore per l'area di gioco */
+#game-container {
+    text-align: center;
+    padding: 10px;
+   /* Riduci il padding per dispositivi mobili */
+    border-radius: 10px;
+   /* Arrotonda gli angoli del contenitore */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.144);
+   /* Ombra per un effetto di sollevamento */
+    position: relative;
+    width: 100%;
+   /* Imposta la larghezza al 100% del contenitore genitore */
+    max-width: 100vw;
+   /* Imposta la larghezza massima alla larghezza della viewport */
+    height: auto;
+   /* Altezza automatica per adattarsi al contenuto */
+    margin: 0 auto;
+   /* Centratura orizzontale */
+    box-sizing: border-box;
+   /* Include padding e bordo nella larghezza e altezza totali */
+}
+/* Contenitore per l'area di gioco */
+#game-area {
+    width: 100%;
+    height: 50vh;
+    position: relative;
+    background-color: #08064f00;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.star {
+    position: absolute; 
+    font-size: 3em; 
+    color: rgb(245, 245, 10); 
+    animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+    from { top: -30px; } /* Inizia sopra il contenitore */
+    to { top: 100%; } /* Termina al di sotto del contenitore */
+}
+#game-message {
+    font-size: 20px;
+    margin-top: 20px;
+    color: #ffffff;
+}
+#time-remaining {
+    font-size: 1.5em;
+    color: #ffffff;
+    font-weight: bold;
+}
+/* Stile per i paragrafi */
+p {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #ffffff;
+    margin-bottom: 50px;
+}
+#game-container p:last-of-type {
+    margin-bottom: 80px;
+   /* Distanza dal footer */
+}
+#game2 {
+    background-image: url('/assets/IMG/sfondo-game2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#alien-game-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.5em;
+    color: #ff4500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 5px #ff4500, 0 0 10px #ff4500;
+   /* Ridotto il numero di ombre */
+    animation: simplePulsate 3s infinite;
+   /* Animazione più leggera */
+    margin: 5px 0 0 0;
+}
+@keyframes simplePulsate {
+    0%, 100% {
+        transform: scale(1);
+   }
+    50% {
+        transform: scale(1.05);
+   }
+}
+/* Stile per il secondo gioco */
+#game2-container {
+    text-align: center;
+    margin-top: 0;
+}
+#game2-area {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-color: #00000025;
+    overflow: hidden;
+}
+.alien {
+    position: absolute;
+    width: 80px; /* Dimensione dell'alieno */
+    height: 80px; /* Cambia anche l'altezza per mantenerne le proporzioni */
+    background-image: url('/assets/IMG/alieno.webp'); /* Percorso corretto dell'immagine */
+    background-size: contain; /* Usa 'contain' per adattare l'immagine all'elemento */
+    background-repeat: no-repeat; /* Evita la ripetizione dell'immagine */
+    background-position: center; /* Centra l'immagine all'interno dell'elemento */
+    cursor: pointer;
+}
+#game2-timer {
+    font-size: 1.5em;
+    color: #fff;
+    margin: 1em 0;
+}
+#game2-message {
+    font-size: 1.2em;
+    color: #fff;
+}
+#space-invaders-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3em;
+    color: #00ff00;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #ff0000, 0 0 40px #ff0000;
+    animation: flicker 1.5s infinite;
+    margin: 20px 0;
+}
+@keyframes flicker {
+    0%, 100% {
+        opacity: 1;
+   }
+    50% {
+        opacity: 0.8;
+   }
+    90% {
+        opacity: 0.6;
+   }
+}
+/* Stile specifico per il game3 */
+#game3-container {
+    text-align: center;
+    background-image: url('/assets/IMG/sfondo-game3.png'); /* Percorso dell'immagine di sfondo spaziale */
+    background-size: cover; /* Adatta l'immagine per coprire tutto lo spazio del contenitore */
+    background-position: center; /* Centra l'immagine di sfondo */
+    background-repeat: no-repeat; /* Impedisce la ripetizione dell'immagine */
+    padding: 20px; /* Spazio interno per evitare che il contenuto tocchi i bordi */
+    border-radius: 10px; /* Arrotonda gli angoli del contenitore (opzionale) */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombra per un effetto di profondità (opzionale) */
+}
+
+#game3-area {
+    width: 100%;
+    max-width: 600px; /* Aumenta la larghezza massima */
+    height: 400px; /* Aumenta l'altezza */
+    margin: 0 auto;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.025);
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0);
+    touch-action: none; /* Disabilita il pinch-to-zoom durante il gioco */
+}
+
+.alien, .bullet, .player {
+    position: absolute;
+}
+
+.alien {
+    width: 15%; /* Modifica la dimensione per adattarsi meglio all'area */
+    height: 15%; /* Modifica l'altezza */
+    background-color: rgba(0, 128, 0, 0);
+}
+
+.player {
+    width: 15%; 
+    height:15%;
+    background-image: url('/assets/IMG/astronauta.png');
+    background-size: contain; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    position: absolute;
+    bottom: 0;
+    left: 42%; 
+}
+
+.bullet {
+    width: 2%;
+    height: 4%; 
+    background-color: red;
+}
+
+/* Timer e messaggi */
+#game3-timer {
+    margin-top: 10px;
+    color: white;
+}
+
+#game3-message {
+    margin-top: 20px;
+    color: white;
+}
+
+footer {
+    background-color: #03132e;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #333;
+}
+/* Stile per i paragrafi nel footer */
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+@media (max-width: 1024px) {
+    .galaxy-heading {
+        font-size: 2.8em; 
+        margin-bottom: 18px; 
+    }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #051c35;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 2;
+   }
+    .nav-menu li {
+        margin: 10px 0;
+        text-align: center;
+   }
+    .menu-toggle {
+        display: flex;
+   }
+}
+@media (max-width: 768px) {
+    .galaxy-heading {
+        font-size: 2.5em; 
+        margin-bottom: 15px; 
+    }
+    .text-3d {
+        font-size: 2em;
+   }
+    .text-3d::before {
+        transform: translate(1px, -1px);
+   }
+    .text-3d::after {
+        transform: translate(-1px, 1px);
+   }
+    #game-message {
+        font-size: 18px;
+   }
+    #time-remaining {
+        font-size: 1.2em;
+   }
+    p {
+        font-size: 1em;
+   }
+    #game-container {
+        padding: 5px;
+   }
+    #game-area {
+        height: 40vh;
+   }
+    h1 {
+        font-size: 2em;
+   }
+    #game-description {
+        font-size: 0.9em;
+   }
+    p {
+        font-size: 0.9em;
+   }
+    button {
+        font-size: 1em;
+        padding: 8px;
+   }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #051c35;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 2;
+   }
+    .nav-menu li {
+        margin: 10px 0;
+        text-align: center;
+   }
+    .menu-toggle {
+        display: flex;
+   }
+}
+
+/* Media Queries per schermi piccoli (fino a 600px) */
+@media (max-width: 600px) {
+    #game3-area {
+        width: 90%;
+        height: 300px;
+   }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #051c35;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 2;
+   }
+    .nav-menu li {
+        margin: 10px 0;
+        text-align: center;
+   }
+    .menu-toggle {
+        display: flex;
+   }
+}
+/* Media Queries per schermi molto piccoli (fino a 480px) */
+@media (max-width: 480px) {
+    .galaxy-heading {
+        font-size: 2em; 
+        margin-bottom: 10px; 
+    }
+
+    .text-3d {
+        font-size: 1.5em;
+   }
+    .text-3d::before {
+        transform: translate(0.5px, -0.5px);
+   }
+    .text-3d::after {
+        transform: translate(-0.5px, 0.5px);
+   }
+    h1 {
+        font-size: 1.5em;
+   }
+    #game-description {
+        font-size: 0.8em;
+   }
+    p {
+        font-size: 0.8em;
+   }
+    button {
+        font-size: 0.9em;
+        padding: 6px;
+   }
+    #game-container {
+        padding: 2px;
+   }
+    #game-area {
+        height: 30vh;
+   }
+    #game-message {
+        font-size: 0.8em;
+   }
+}
