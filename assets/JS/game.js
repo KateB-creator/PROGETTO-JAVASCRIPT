@@ -1,78 +1,75 @@
-
 document.addEventListener('DOMContentLoaded', () => {
-
+    // Eventi per il flip delle card
     document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('click', () => {
             card.querySelector('.card-inner').classList.toggle('flipped');
         });
     });
-    
-    // Riferimenti agli elementi
+
+    // Gestione del menu ad hamburger
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
-    const shareButton = document.querySelector('.share-button');
 
-    // Gestione del clic per il menu ad hamburger
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
     });
 
-    // Gestione del clic per il pulsante di condivisione
+    // Opzionale: Gestione della chiusura del menu se si clicca all'esterno
+    document.addEventListener('click', (event) => {
+        if (!menuToggle.contains(event.target) && !navMenu.contains(event.target)) {
+            navMenu.classList.remove('active');
+        }
+    });
+
+    // Gestione del pulsante di condivisione
     shareButton.addEventListener('click', () => {
-        // Aggiungi il codice per la condivisione qui
         alert('Condividi la tua pagina!');
     });
-});
 
-// Aggiorna l'anno corrente nel documento quando il documento è completamente carico
-document.addEventListener('DOMContentLoaded', () => {
+    // Aggiornamento dell'anno corrente nel footer
     const currentYear = new Date().getFullYear();
     document.getElementById('current-year').textContent = currentYear;
-});
 
-
-// game1
-
-document.addEventListener("DOMContentLoaded", () => {
-    const startButton = document.getElementById("start-game1");
+    // Funzioni per il gioco 1
+    const startButton1 = document.getElementById("start-game1");
     const counterValue = document.getElementById('counter-value');
-    const timeRemaining = document.getElementById('time-remaining');
-    const gameMessage = document.getElementById('game-message');
-    const gameArea = document.getElementById('game-area');
+    const timeRemaining1 = document.getElementById('time-remaining');
+    const gameMessage1 = document.getElementById('game-message');
+    const gameArea1 = document.getElementById('game-area');
     const incrementButton = document.getElementById('increment');
     const decrementButton = document.getElementById('decrement');
-    const restartButton = document.getElementById('restart-button');
+    const restartButton1 = document.getElementById('restart-button');
 
     let counter = 0; 
-    let timeLeft = 30;
+    let timeLeft1 = 30;
 
     function updateCounter() {
         counterValue.textContent = counter;
     }
 
     function updateTime() {
-        timeRemaining.textContent = timeLeft;
+        timeRemaining1.textContent = timeLeft1;
     }
 
     function endGame(message) {
-        clearInterval(timer);
-        clearInterval(spawnTimer);
-        gameMessage.textContent = message;
+        clearInterval(timer1);
+        clearInterval(spawnTimer1);
+        gameMessage1.textContent = message;
         document.querySelectorAll('.star').forEach(star => star.remove());
-        restartButton.style.display = 'inline-block';
+        restartButton1.style.display = 'inline-block';
     }
 
     function spawnStar() {
         const star = document.createElement('i');
         star.classList.add('fas', 'fa-star', 'star');
-        star.style.left = Math.random() * (gameArea.clientWidth - 30) + 'px';
-        star.style.top = Math.random() * (gameArea.clientHeight - 30) + 'px';
+        star.style.left = Math.random() * (gameArea1.clientWidth - 30) + 'px';
+        star.style.top = Math.random() * (gameArea1.clientHeight - 30) + 'px';
         star.addEventListener('click', function() {
             counter++;
             updateCounter();
             star.remove();
         });
-        gameArea.appendChild(star);
+        gameArea1.appendChild(star);
 
         setTimeout(() => {
             if (star.parentElement) {
@@ -81,33 +78,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 3000);
     }
 
-    let timer;
-    let spawnTimer;
+    let timer1;
+    let spawnTimer1;
 
-    function startGame() {
+    function startGame1() {
         counter = 0;
-        timeLeft = 30;
-        gameMessage.textContent = '';
-        restartButton.style.display = 'none';
+        timeLeft1 = 30;
+        gameMessage1.textContent = '';
+        restartButton1.style.display = 'none';
         updateCounter();
         updateTime();
 
-        clearInterval(timer);
-        clearInterval(spawnTimer);
+        clearInterval(timer1);
+        clearInterval(spawnTimer1);
 
-        timer = setInterval(() => {
-            timeLeft--;
+        timer1 = setInterval(() => {
+            timeLeft1--;
             updateTime();
-            if (timeLeft <= 0) {
+            if (timeLeft1 <= 0) {
                 endGame('Time is up! You scored ' + counter + ' points.');
             }
         }, 1000);
 
-        spawnTimer = setInterval(spawnStar, 1000);
+        spawnTimer1 = setInterval(spawnStar, 1000);
     }
 
-    startButton.addEventListener('click', startGame);
-
+    startButton1.addEventListener('click', startGame1);
     incrementButton.addEventListener('click', () => {
         counter++;
         updateCounter();
@@ -118,34 +114,29 @@ document.addEventListener("DOMContentLoaded", () => {
         updateCounter();
     });
 
-    restartButton.addEventListener('click', startGame);
+    restartButton1.addEventListener('click', startGame1);
 
     updateCounter();
     updateTime();
-});
 
-// game2
-
-document.addEventListener("DOMContentLoaded", () => {
-
-
-    const startButton = document.getElementById("start-game2");
+    // Funzioni per il gioco 2
+    const startButton2 = document.getElementById("start-game2");
     const game2Area = document.getElementById("game2-area");
     const game2Message = document.getElementById("game2-message");
-    const timerElement = document.getElementById("game2-timer");
-    
-    if (!startButton || !game2Area || !game2Message || !timerElement) {
+    const timerElement2 = document.getElementById("game2-timer");
+
+    if (!startButton2 || !game2Area || !game2Message || !timerElement2) {
         console.error('Uno o più elementi necessari non sono presenti nel DOM.');
         return;
     }
 
-    let timer;
-    let spawnInterval;
-    let timeRemaining = 30; // Tempo in secondi
-    const numAliens = 10; // Numero iniziale di alieni
-    const spawnRate = 500; // Intervallo di tempo per spawnare nuovi alieni (in millisecondi)
+    let timer2;
+    let spawnInterval2;
+    let timeRemaining2 = 30;
+    const numAliens = 10;
+    const spawnRate = 500;
 
-    const createAlien = () => {
+    const createAlien2 = () => {
         const alien = document.createElement("div");
         alien.className = "alien";
         alien.style.left = `${Math.random() * (game2Area.offsetWidth - 80)}px`;
@@ -154,89 +145,84 @@ document.addEventListener("DOMContentLoaded", () => {
             alien.remove();
             if (document.querySelectorAll(".alien").length === 0) {
                 game2Message.textContent = "Hai catturato tutti gli alieni!";
-                clearInterval(timer);
-                clearInterval(spawnInterval);
+                clearInterval(timer2);
+                clearInterval(spawnInterval2);
             }
         });
         game2Area.appendChild(alien);
     };
 
-    const startGame = () => {
-        game2Area.innerHTML = ''; // Pulisci l'area del gioco
+    const startGame2 = () => {
+        game2Area.innerHTML = '';
         game2Message.textContent = '';
-        timeRemaining = 30; // Reset del tempo rimanente
-        timerElement.textContent = `Tempo rimanente: ${timeRemaining} secondi`;
+        timeRemaining2 = 30;
+        timerElement2.textContent = `Tempo rimanente: ${timeRemaining2} secondi`;
 
-        // Crea il numero iniziale di alieni
         for (let i = 0; i < numAliens; i++) {
-            createAlien();
+            createAlien2();
         }
 
-        // Crea nuovi alieni durante il gioco
-        spawnInterval = setInterval(createAlien, spawnRate);
+        spawnInterval2 = setInterval(createAlien2, spawnRate);
 
-        timer = setInterval(() => {
-            timeRemaining--;
-            timerElement.textContent = `Tempo rimanente: ${timeRemaining} secondi`;
-            if (timeRemaining <= 0) {
-                clearInterval(timer);
-                clearInterval(spawnInterval);
+        timer2 = setInterval(() => {
+            timeRemaining2--;
+            timerElement2.textContent = `Tempo rimanente: ${timeRemaining2} secondi`;
+            if (timeRemaining2 <= 0) {
+                clearInterval(timer2);
+                clearInterval(spawnInterval2);
                 game2Message.textContent = "Tempo scaduto! Hai perso.";
             }
         }, 1000);
     };
 
-    startButton.addEventListener("click", startGame);
-});
+    startButton2.addEventListener("click", startGame2);
 
-// game3
-
-document.addEventListener('DOMContentLoaded', () => {
-    const gameArea = document.getElementById('game3-area');
-    const startButton = document.getElementById('start-game3');
-    const timerDisplay = document.getElementById('game3-timer');
-    const messageDisplay = document.getElementById('game3-message');
+    // Funzioni per il gioco 3
+    const gameArea3 = document.getElementById('game3-area');
+    const startButton3 = document.getElementById('start-game3');
+    const timerDisplay3 = document.getElementById('game3-timer');
+    const messageDisplay3 = document.getElementById('game3-message');
 
     const player = document.createElement('div');
     player.classList.add('player');
-    gameArea.appendChild(player);
+    gameArea3.appendChild(player);
 
-    let aliens = [];
+    let aliens3 = [];
     let bullets = [];
     let alienSpeed = 2;
-    let gameInterval, bulletInterval, timerInterval;
-    let timeLeft = 60;
+    let gameInterval3, bulletInterval3, timerInterval3;
+    let timeLeft3 = 60;
     let gameActive = false;
     let touchStartX = 0;
 
-    function createAliens() {
+    function createAliens3() {
         for (let i = 0; i < 6; i++) {
             const alien = document.createElement('div');
             alien.classList.add('alien');
-            alien.style.top = '0px'; // Posizione iniziale
-            alien.style.left = `${i * (gameArea.clientWidth / 6)}px`; // Posiziona gli alieni orizzontalmente
-            gameArea.appendChild(alien);
-            aliens.push(alien);
+            alien.style.top = '0px';
+            alien.style.left = `${i * (gameArea3.clientWidth / 6)}px`;
+            gameArea3.appendChild(alien);
+            aliens3.push(alien);
         }
     }
 
-    function moveAliens() {
-        aliens.forEach(alien => {
+    function moveAliens3() {
+        aliens3.forEach(alien => {
             let currentTop = parseInt(alien.style.top);
             alien.style.top = `${currentTop + alienSpeed}px`;
 
-            if (currentTop + alienSpeed > (gameArea.clientHeight - player.clientHeight * 2)) {
-                endGame('Hai perso! Gli alieni sono atterrati.');
+            if (currentTop + alienSpeed > (gameArea3.clientHeight - player.clientHeight * 2)) {
+                endGame3('Hai perso! Gli alieni sono atterrati.');
             }
         });
     }
 
-    function movePlayer(e) {
+    function movePlayer3(e) {
         let currentLeft = parseInt(player.style.left);
 
         if (e.key === 'ArrowLeft' && currentLeft > 0) {
             player.style.left = `${currentLeft - player.clientWidth}px`;
-        } else if (e.key === 'ArrowRight' && currentLeft < (gameArea.clientWidth - player.clientWidth)) {
+        } else if (e.key === 'ArrowRight' && currentLeft < (gameArea3.clientWidth - player.clientWidth)) {
             player.style.left = `${currentLeft + player.clientWidth}px`;
         }
     }
@@ -246,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bullet.classList.add('bullet');
         bullet.style.left = `${parseInt(player.style.left) + (player.clientWidth / 2) - (bullet.clientWidth / 2)}px`;
         bullet.style.top = `${player.offsetTop - bullet.clientHeight}px`;
-        gameArea.appendChild(bullet);
+        gameArea3.appendChild(bullet);
         bullets.push(bullet);
     }
 
@@ -260,15 +246,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 bullets.splice(index, 1);
             }
 
-            aliens.forEach((alien, alienIndex) => {
+            aliens3.forEach((alien, alienIndex) => {
                 if (checkCollision(bullet, alien)) {
                     alien.remove();
                     bullet.remove();
-                    aliens.splice(alienIndex, 1);
+                    aliens3.splice(alienIndex, 1);
                     bullets.splice(index, 1);
 
-                    if (aliens.length === 0) {
-                        endGame('Hai vinto! Tutti gli alieni sono stati distrutti.');
+                    if (aliens3.length === 0) {
+                        endGame3('Hai vinto! Tutti gli alieni sono stati distrutti.');
                     }
                 }
             });
@@ -287,46 +273,46 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
-    function startGame() {
+    function startGame3() {
         if (gameActive) return;
         gameActive = true;
-        messageDisplay.textContent = '';
-        timeLeft = 60;
-        aliens = [];
+        messageDisplay3.textContent = '';
+        timeLeft3 = 60;
+        aliens3 = [];
         bullets = [];
         alienSpeed = 2;
         player.style.left = '45%';
-        gameArea.querySelectorAll('.alien, .bullet').forEach(e => e.remove());
+        gameArea3.querySelectorAll('.alien, .bullet').forEach(e => e.remove());
 
-        createAliens();
+        createAliens3();
 
-        gameInterval = setInterval(moveAliens, 100);
-        bulletInterval = setInterval(moveBullets, 50);
-        timerInterval = setInterval(updateTimer, 1000);
+        gameInterval3 = setInterval(moveAliens3, 100);
+        bulletInterval3 = setInterval(moveBullets, 50);
+        timerInterval3 = setInterval(updateTimer3, 1000);
     }
 
-    function updateTimer() {
-        timeLeft--;
-        timerDisplay.textContent = `Tempo rimanente: ${timeLeft} secondi`;
+    function updateTimer3() {
+        timeLeft3--;
+        timerDisplay3.textContent = `Tempo rimanente: ${timeLeft3} secondi`;
 
-        if (timeLeft <= 0) {
-            endGame('Tempo scaduto! Hai perso.');
+        if (timeLeft3 <= 0) {
+            endGame3('Tempo scaduto! Hai perso.');
         }
     }
 
-    function endGame(message) {
-        clearInterval(gameInterval);
-        clearInterval(bulletInterval);
-        clearInterval(timerInterval);
+    function endGame3(message) {
+        clearInterval(gameInterval3);
+        clearInterval(bulletInterval3);
+        clearInterval(timerInterval3);
         gameActive = false;
-        messageDisplay.textContent = message;
+        messageDisplay3.textContent = message;
     }
 
-    function handleTouchStart(e) {
+    function handleTouchStart3(e) {
         touchStartX = e.touches[0].clientX;
     }
 
-    function handleTouchMove(e) {
+    function handleTouchMove3(e) {
         const touchX = e.touches[0].clientX;
         const deltaX = touchX - touchStartX;
         touchStartX = touchX;
@@ -336,26 +322,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (currentLeft < 0) {
             currentLeft = 0;
-        } else if (currentLeft > (gameArea.clientWidth - player.clientWidth)) {
-            currentLeft = gameArea.clientWidth - player.clientWidth;
+        } else if (currentLeft > (gameArea3.clientWidth - player.clientWidth)) {
+            currentLeft = gameArea3.clientWidth - player.clientWidth;
         }
 
         player.style.left = `${currentLeft}px`;
     }
 
-    function handleTouchEnd(e) {
+    function handleTouchEnd3(e) {
         shootBullet();
     }
 
-    startButton.addEventListener('click', startGame);
-    document.addEventListener('keydown', movePlayer);
+    startButton3.addEventListener('click', startGame3);
+    document.addEventListener('keydown', movePlayer3);
     document.addEventListener('keydown', (e) => {
         if (e.key === ' ') {
             shootBullet();
         }
     });
 
-    gameArea.addEventListener('touchstart', handleTouchStart);
-    gameArea.addEventListener('touchmove', handleTouchMove);
-    gameArea.addEventListener('touchend', handleTouchEnd);
+    gameArea3.addEventListener('touchstart', handleTouchStart3);
+    gameArea3.addEventListener('touchmove', handleTouchMove3);
+    gameArea3.addEventListener('touchend', handleTouchEnd3);
 });

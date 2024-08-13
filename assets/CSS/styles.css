@@ -28,10 +28,11 @@ header {
     margin-left: auto;
 }
 .menu-toggle .bar {
-    width: 25px;
+    display: block;
+    width: 30px;
     height: 3px;
     background-color: #fff;
-    margin: 3px 0;
+    margin: 5px 0;
 }
 /* Stili per il menu di navigazione */
 .nav-menu {
@@ -754,8 +755,11 @@ footer p {
         font-size: 2.8em; 
         margin-bottom: 18px; 
     }
+    .menu-toggle {
+        display: flex;
+    }
     .nav-menu {
-        display: none;
+        display: none; /* Nascondi il menu per default */
         flex-direction: column;
         width: 100%;
         background-color: #051c35;
@@ -763,14 +767,15 @@ footer p {
         top: 60px;
         left: 0;
         z-index: 2;
-   }
+        padding: 0;
+    }
+    .nav-menu.active {
+        display: flex; /* Mostra il menu quando la classe 'active' è applicata */
+    }
     .nav-menu li {
         margin: 10px 0;
         text-align: center;
-   }
-    .menu-toggle {
-        display: flex;
-   }
+    }
 }
 @media (max-width: 768px) {
     .galaxy-heading {
@@ -814,23 +819,12 @@ footer p {
         font-size: 1em;
         padding: 8px;
    }
-    .nav-menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #051c35;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        z-index: 2;
-   }
-    .nav-menu li {
-        margin: 10px 0;
-        text-align: center;
-   }
-    .menu-toggle {
-        display: flex;
-   }
+   .nav-menu {
+    display: none; /* Nascondi il menu per default */
+}
+.nav-menu.active {
+    display: flex; /* Mostra il menu quando la classe 'active' è applicata */
+}
 }
 
 /* Media Queries per schermi piccoli (fino a 600px) */
@@ -839,23 +833,12 @@ footer p {
         width: 90%;
         height: 300px;
    }
-    .nav-menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #051c35;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        z-index: 2;
-   }
-    .nav-menu li {
-        margin: 10px 0;
-        text-align: center;
-   }
-    .menu-toggle {
-        display: flex;
-   }
+   .nav-menu {
+    display: none; /* Nascondi il menu per default */
+}
+.nav-menu.active {
+    display: flex; /* Mostra il menu quando la classe 'active' è applicata */
+}
 }
 /* Media Queries per schermi molto piccoli (fino a 480px) */
 @media (max-width: 480px) {
