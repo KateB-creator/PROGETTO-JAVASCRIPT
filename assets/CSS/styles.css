@@ -138,16 +138,13 @@ header {
     width: 0;
     height: 2px;
     background-color: #fff;
-   /* Colore della linea */
     transition: width 0.3s ease, left 0.3s ease;
-   /* Transizione per l'effetto della linea */
 }
 /* Mostra la linea quando il mouse è sopra */
 #navMenu a:hover::after, #navMenu a:focus::after {
     width: 100%;
     left: 0;
 }
-
 .welcome-section {
     position: relative;
     text-align: center;
@@ -308,17 +305,11 @@ header {
     line-height: 1.6;
     margin-bottom: 1.5em;
     opacity: 0;
-   /* Inizia invisibile */
     animation: fadeInUp 2s ease-out forwards;
-   /* Applica l'animazione */
     animation-delay: calc(0.5s * var(--i));
-   /* Ritardo basato su una variabile */
     color: #e0e0e0;
-   /* Colore del testo grigio chiaro per un effetto galattico */
     text-shadow: 0 0 5px #fff, 
-   /* Effetto di bagliore bianco */
     0 0 10px #fff, 0 0 15px #ff00ff, 
-   /* Effetto di bagliore viola per dare un tocco futuristico */
     0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff;
 }
 @keyframes fadeInUp {
@@ -382,13 +373,9 @@ header {
 }
 #game1 {
     background-image: url('/assets/IMG/sfondo-game1.webp');
-   /* Percorso dell'immagine di sfondo */
     background-size: cover;
-   /* Adatta l'immagine per coprire tutto lo spazio del contenitore */
     background-position: center;
-   /* Centra l'immagine di sfondo */
     background-repeat: no-repeat;
-   /* Impedisce la ripetizione dell'immagine */
 }
 /* Stili per il contenitore con il testo e il gioco */
 #content-container {
@@ -409,139 +396,94 @@ header {
 .text-3d {
     font-size: 4em;
     font-weight: bold;
-   /* Grassetto */
     color: #000000;
-   /* Colore del testo */
     position: relative;
-   /* Posizionamento relativo per gli effetti 3D */
     display: inline-block;
-   /* Impedisce la rottura del testo */
     margin: 0.2em 0;
-   /* Margini verticali */
 }
 /* Effetti 3D per il testo */
 .text-3d::before, .text-3d::after {
     content: attr(data-text);
-   /* Utilizza il valore dell'attributo data-text */
     position: absolute;
-   /* Posizionamento assoluto per l'effetto 3D */
     top: 0;
-   /* Allinea in alto */
     left: 0;
-   /* Allinea a sinistra */
     z-index: -1;
-   /* Posizionamento dietro il testo principale */
 }
 .text-3d::before {
     color: cyan;
-   /* Colore dell'effetto 3D */
     transform: translate(3px, -3px);
-   /* Sposta l'effetto 3D */
 }
 .text-3d::after {
     color: red;
-   /* Colore dell'effetto 3D */
     transform: translate(-3px, 3px);
-   /* Sposta l'effetto 3D */
 }
 /* Stile per la descrizione del gioco */
 #game-description {
     font-size: 20px;
-   /* Dimensione del font */
     margin-bottom: 20px;
-   /* Margine inferiore */
     color: #ffffff;
-   /* Colore del testo */
 }
 /* Stile per i paragrafi */
 p {
     font-size: 20px;
-   /* Dimensione del font */
     margin: 10px 0;
-   /* Margini superiori e inferiori */
 }
 /* Contenitore del gioco */
 #content-container {
     text-align: center;
     padding: 20px;
 }
-/* Contenitore per i controlli */
+
 /* Stile per il contatore */
 #counter-container {
     display: flex;
-   /* Utilizza il layout Flexbox */
     align-items: center;
-   /* Allinea gli elementi verticalmente al centro */
     justify-content: center;
-   /* Allinea gli elementi orizzontalmente al centro */
     margin: 20px 0;
-   /* Margini superiore e inferiore */
 }
 #counter-value {
     font-size: 2em;
-   /* Dimensione del font per il contatore */
     color: #ff0000;
-   /* Colore del testo */
     font-weight: bold;
-   /* Grassetto */
     margin: 0 20px;
-   /* Margine orizzontale per distanziare dai pulsanti */
 }
 /* Stile per i pulsanti */
 button {
     font-size: 1.5em;
-   /* Dimensione del font per i pulsanti */
     padding: 12px 20px;
-   /* Spaziatura interna */
     margin: 0 10px;
-   /* Margine orizzontale tra i pulsanti e il contatore */
     border: none;
     border-radius: 8px;
     cursor: pointer;
     background-color: #60024d;
-   /* Colore di sfondo dei pulsanti */
     color: white;
     transition: background-color 0.3s, transform 0.3s;
-   /* Transizione per effetto hover */
 }
 /* Effetto hover per i pulsanti */
 button:hover {
     background-color: #fa5aec;
-   /* Colore di sfondo al passaggio del mouse */
     transform: scale(1.05);
-   /* Leggera ingrandimento per effetto di interazione */
 }
 /* Colori specifici per i pulsanti di incremento e decremento */
 #increment, #decrement, #restart-button {
-    background-color: #ffc107;
-   /* Colore giallo per i pulsanti */
+    background-color: #6b0351;
     color: #ffffff;
-   /* Colore del testo per questi pulsanti */
 }
 #restart-button {
     background-color: #dc3545;
-   /* Colore rosso per il pulsante di riavvio */
 }
 /* Contenitore per l'area di gioco */
 #game-container {
     text-align: center;
     padding: 10px;
-   /* Riduci il padding per dispositivi mobili */
     border-radius: 10px;
-   /* Arrotonda gli angoli del contenitore */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.144);
-   /* Ombra per un effetto di sollevamento */
     position: relative;
     width: 100%;
-   /* Imposta la larghezza al 100% del contenitore genitore */
     max-width: 100vw;
-   /* Imposta la larghezza massima alla larghezza della viewport */
     height: auto;
-   /* Altezza automatica per adattarsi al contenuto */
     margin: 0 auto;
-   /* Centratura orizzontale */
     box-sizing: border-box;
-   /* Include padding e bordo nella larghezza e altezza totali */
 }
 /* Contenitore per l'area di gioco */
 #game-area {
@@ -597,9 +539,7 @@ p {
     text-transform: uppercase;
     letter-spacing: 3px;
     text-shadow: 0 0 5px #ff4500, 0 0 10px #ff4500;
-   /* Ridotto il numero di ombre */
     animation: simplePulsate 3s infinite;
-   /* Animazione più leggera */
     margin: 5px 0 0 0;
 }
 @keyframes simplePulsate {
@@ -624,12 +564,12 @@ p {
 }
 .alien {
     position: absolute;
-    width: 80px; /* Dimensione dell'alieno */
-    height: 80px; /* Cambia anche l'altezza per mantenerne le proporzioni */
-    background-image: url('/assets/IMG/alieno.webp'); /* Percorso corretto dell'immagine */
-    background-size: contain; /* Usa 'contain' per adattare l'immagine all'elemento */
-    background-repeat: no-repeat; /* Evita la ripetizione dell'immagine */
-    background-position: center; /* Centra l'immagine all'interno dell'elemento */
+    width: 80px;
+    height: 80px; 
+    background-image: url('/assets/IMG/alieno.webp'); 
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    background-position: center; 
     cursor: pointer;
 }
 #game2-timer {
@@ -676,14 +616,14 @@ p {
 
 #game3-area {
     width: 100%;
-    max-width: 600px; /* Aumenta la larghezza massima */
-    height: 400px; /* Aumenta l'altezza */
+    max-width: 600px; 
+    height: 400px; 
     margin: 0 auto;
     position: relative;
     background-color: rgba(0, 0, 0, 0.025);
     overflow: hidden;
     border: 2px solid rgba(255, 255, 255, 0);
-    touch-action: none; /* Disabilita il pinch-to-zoom durante il gioco */
+    touch-action: none; 
 }
 
 .alien, .bullet, .player {
@@ -691,8 +631,8 @@ p {
 }
 
 .alien {
-    width: 15%; /* Modifica la dimensione per adattarsi meglio all'area */
-    height: 15%; /* Modifica l'altezza */
+    width: 15%; 
+    height: 15%; 
     background-color: rgba(0, 128, 0, 0);
 }
 
@@ -743,9 +683,9 @@ footer p {
 }
 @media (max-width: 1024px) {
     #space-invaders-title {
-        font-size: 2.5em; /* Riduci la dimensione del testo */
-        letter-spacing: 4px; /* Riduci lo spazio tra le lettere */
-        margin: 15px 0; /* Riduci il margine */
+        font-size: 2.5em; 
+        letter-spacing: 4px; 
+        margin: 15px 0;
     }
     .galaxy-heading {
         font-size: 2.8em; 
@@ -755,7 +695,7 @@ footer p {
         display: flex;
     }
     .nav-menu {
-        display: none; /* Nascondi il menu per default */
+        display: none; 
         flex-direction: column;
         width: 100%;
         background-color: #051c35;
@@ -857,10 +797,10 @@ footer p {
         height: 300px;
    }
    .nav-menu {
-    display: none; /* Nascondi il menu per default */
+    display: none; 
 }
 .nav-menu.active {
-    display: flex; /* Mostra il menu quando la classe 'active' è applicata */
+    display: flex; 
  }
 }
 @media (max-width: 480px) {
