@@ -72,4 +72,4 @@ Il sito web è composto da tre giochi principali:
 
 Puoi provare l'applicazione cliccando sul link seguente:
 
-[Prova l'Applicazione Qui](https://jade-tulumba-912883.netlify.app/)
+[Prova l'Applicazione Qui](https://battagliestellari.netlify.app/)
